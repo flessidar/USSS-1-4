@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101b2b">
+<title>USSS Academy — Вводный тест</title>
+<style>
+:root{--bg:#0b1220;--panel:#121e30;--panel2:#18283e;--line:#2a3d56;--text:#eef4fb;--muted:#9fb0c5;--gold:#d7b56d;--gold2:#f0d99f;--green:#63c69b;--red:#f07c7c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#203653 0,transparent 55%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{width:min(920px,calc(100% - 32px));margin:0 auto;padding:34px 0 56px}
+header{text-align:center;padding:24px 12px 30px}.crest{width:62px;height:62px;border:1px solid #927c50;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;color:var(--gold2);font-size:27px;background:#1b2b40}
+.kicker{color:var(--gold);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.12;margin:9px 0;color:#fff;letter-spacing:.02em}
+.subtitle{color:var(--muted);max-width:620px;margin:10px auto 0}
+.panel{background:linear-gradient(145deg,rgba(24,40,62,.98),rgba(16,29,46,.98));border:1px solid var(--line);border-radius:18px;padding:clamp(20px,4vw,34px);box-shadow:0 18px 50px #0005}
+.meta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 0 0}.pill{border:1px solid var(--line);color:#c4d1e0;border-radius:30px;padding:6px 12px;font-size:12px}
+.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}.mini{background:#0e1929;border:1px solid var(--line);border-radius:12px;padding:13px}.mini b{display:block;color:var(--gold2);font-size:18px}.mini span{font-size:12px;color:var(--muted)}
+.notice{border-left:3px solid var(--gold);padding:10px 14px;background:#d7b56d12;color:#cbd7e5;border-radius:0 9px 9px 0;font-size:13px;margin:20px 0}
+button{border:0;border-radius:10px;padding:12px 19px;font-weight:700;font-size:15px;cursor:pointer;transition:.18s}
+button:focus-visible,input:focus-visible+label{outline:3px solid var(--gold);outline-offset:3px}
+.primary{background:var(--gold);color:#182235}.primary:hover{background:var(--gold2);transform:translateY(-1px)}
+.secondary{background:#24364d;color:var(--text);border:1px solid var(--line)}
+button:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:24px}
+.topline{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px;margin-bottom:10px}
+.progress{height:6px;background:#0a1422;border-radius:8px;overflow:hidden;margin-bottom:26px}.bar{height:100%;width:0;background:linear-gradient(90deg,#b18c4d,var(--gold2));transition:width .25s}
+.qnum{color:var(--gold);font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:800}
+h2{font-size:clamp(20px,3vw,26px);line-height:1.3;margin:8px 0 22px}
+.options{display:grid;gap:10px}
+.option{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);background:#0e1929;border-radius:12px;padding:14px;cursor:pointer;transition:.15s}
+.option:hover{border-color:#8b7955;background:#17263a}
+.option input{accent-color:var(--gold);margin:4px 0 0;flex:0 0 auto;width:17px;height:17px}
+.option span{flex:1}
+.option.selected{border-color:var(--gold);background:#d7b56d12}
+.feedback{display:none;margin-top:18px;padding:14px;border-radius:12px;font-size:14px}
+.feedback.good{display:block;background:#63c69b14;border:1px solid #63c69b66;color:#bcebd6}
+.feedback.bad{display:block;background:#f07c7c12;border:1px solid #f07c7c66;color:#ffd0d0}
+.result{text-align:center}.score{font-size:58px;line-height:1.1;font-weight:800;color:var(--gold2);margin:18px 0 6px}
+.result h2{margin:8px 0}.result p{color:var(--muted)}
+.review{margin-top:24px;text-align:left;display:grid;gap:10px}.review-item{background:#0e1929;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}.review-item strong{display:block;margin-bottom:4px}.ok{color:var(--green)}.no{color:var(--red)}
+footer{text-align:center;color:#8294aa;font-size:12px;padding:22px 8px 0}a{color:var(--gold2)}
+.hidden{display:none!important}
+.password-box{max-width:520px;margin:0 auto}.password-row{display:flex;gap:10px;margin-top:18px}.password-row input{min-width:0;flex:1;background:#0e1929;border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--text);font:inherit}.password-error{color:var(--red);font-size:13px;margin-top:10px;min-height:20px}
+@media(max-width:600px){.intro-grid{grid-template-columns:1fr}.actions{flex-direction:column-reverse}.actions button{width:100%}.panel{padding:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="crest">★</div>
+  <div class="kicker">United States Secret Service</div>
+  <h1>USSS ACADEMY</h1>
+  <p class="subtitle">Вводное тестирование для новых сотрудников. Проверьте, насколько хорошо вы усвоили основные правила службы.</p>
+  <div class="meta"><span class="pill">10 вопросов</span><span class="pill">Один правильный ответ</span><span class="pill">Учебная аттестация</span></div>
+</header>
+
+<section class="panel password-box" id="passwordGate">
+  <div class="kicker">Доступ ограничен</div>
+  <h2>Введите пароль для начала тестирования</h2>
+  <p style="color:var(--muted)">Тест USSS ACADEMY доступен только сотрудникам, получившим пароль от руководства.</p>
+  <form id="passwordForm">
+    <div class="password-row">
+      <input id="sitePassword" type="password" placeholder="Введите пароль" autocomplete="current-password" required>
+      <button class="primary" type="submit">Войти</button>
+    </div>
+    <div class="password-error" id="passwordError" role="alert"></div>
+  </form>
+</section>
+
+<section class="panel hidden" id="welcome">
+  <div class="kicker">Добро пожаловать в состав</div>
+  <h2>Перед началом тестирования</h2>
+  <p>Тест охватывает первые шаги после вступления, служебную дисциплину, экипировку, работу на посту и базовые процедуры USSS.</p>
+  <div class="intro-grid">
+    <div class="mini"><b>10</b><span>вопросов в тесте</span></div>
+    <div class="mini"><b>8/10</b><span>учебный порог прохождения</span></div>
+    <div class="mini"><b>∞</b><span>попыток на этом сайте</span></div>
+  </div>
+  <div class="notice">Важно: порог 8 из 10 установлен для этого учебного сайта и не заменяет официальные требования экзамена или действующие распоряжения руководства. При расхождениях руководствуйтесь актуальными документами USSS.</div>
+  <button class="primary" id="start">Начать тестирование →</button>
+</section>
+
+<section class="panel hidden" id="quiz" aria-live="polite">
+  <div class="topline"><span id="counter">Вопрос 1 из 10</span><span id="answered">Ответьте на вопрос</span></div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div class="qnum" id="qnum">Вопрос 01</div>
+  <h2 id="question"></h2>
+  <div class="options" id="options"></div>
+  <div class="feedback" id="feedback"></div>
+  <div class="actions">
+    <button class="secondary" id="back">← Назад</button>
+    <button class="primary" id="next" disabled>Ответить и продолжить →</button>
+  </div>
+</section>
+
+<section class="panel hidden result" id="result" aria-live="polite">
+  <div class="kicker">Результат тестирования</div>
+  <div class="score" id="score">0/10</div>
+  <h2 id="resultTitle"></h2>
+  <p id="resultText"></p>
+  <div class="review" id="review"></div>
+  <div class="actions">
+    <button class="secondary" id="restart">Пройти заново</button>
+    <button class="primary" id="print">Распечатать результат</button>
+  </div>
+</section>
+<footer>
+  Учебный материал составлен по презентации USSS ACADEMY (версия от 23.11.2025) и опубликованному уставу USSS.
+  <br><a href="https://forum.gta5rp.com/threads/ustav-united-states-secret-service.3350930/" target="_blank" rel="noopener">Открыть тему с уставом USSS</a>
+  <br>Неофициальный учебный инструмент фракции • Не собирает и не отправляет ответы на сервер
+</footer>
+</div>
+<script>
+const questions = [
+ {q:"Как сотрудник USSS должен обращаться с информацией, полученной внутри структуры?",a:["Можно рассказывать друзьям, если не называть имена","Информация является служебной и не подлежит разглашению посторонним","Можно публиковать её после окончания смены","Разглашать можно, если информация кажется неважной"],c:1,e:"Презентация подчёркивает: информация, полученная в USSS, является служебной и не подлежит огласке."},
+ {q:"В какой срок новобранец должен изучить законодательную базу и подготовиться к первому экзамену?",a:["24 часа","48 часов","72 часа (3 дня)","7 дней"],c:2,e:"На подготовку отводится 72 часа. Если нужно больше времени, следует предупредить руководство ATD через спец-связь."},
+ {q:"Сколько попыток даётся на сдачу первого экзамена согласно презентации Академии?",a:["Одна","Две","Три","Пять"],c:2,e:"Для сдачи экзамена предусмотрено три попытки."},
+ {q:"Какой результат экзамена указан как условие успешной сдачи и первого повышения?",a:["Не менее 50%","Более 75% верных ответов","Ровно 75%","Не менее 90%"],c:1,e:"В презентации указано: успешно сдать экзамен — набрать более 75% верных ответов."},
+ {q:"Как должна выглядеть нашивка сотрудника, пока он состоит в Академии?",a:["[USSS | ATD | XXXX]","[USSS | A | XXXX]","[USSS | ERT | XXXX]","[USSS | XXXX]"],c:1,e:"Для члена Академии используется формат [USSS | A | XXXX], где XXXX — номер бейджика."},
+ {q:"Что необходимо проверить в экипировке перед службой?",a:["Боди-камера включена и запись видеофиксации проверена","Достаточно иметь только бронежилет","Боди-камера нужна только во время задержания","Можно заменить боди-камеру записью экрана"],c:0,e:"В списке экипировки указаны включённая боди-камера и проверка записи видеофиксации."},
+ {q:"Как часто сотрудник на посту в холле Капитолия докладывает обстановку в рацию?",a:["Каждые 5 минут","Каждые 10 минут","Каждые 20 минут","Только при смене обстановки"],c:2,e:"Доклад об обстановке на посту передаётся каждые 20 минут."},
+ {q:"Гражданин отказывается от обыска в холле Капитолия. Как следует поступить по презентации?",a:["Немедленно задержать гражданина","Применить силу и провести обыск","Вынести законное требование покинуть территорию Мэрии","Игнорировать отказ и продолжить обыск"],c:2,e:"При отказе от обыска необходимо вынести гражданину законное требование покинуть территорию Мэрии."},
+ {q:"Что из перечисленного запрещено во время несения постовой службы?",a:["Доложить о заступлении на пост","Покидать пост без весомой причины и уходить в AFK","Консультировать граждан при отсутствии секретаря на ресепшне","Передавать доклад в рацию каждые 20 минут"],c:1,e:"На посту запрещено уходить без весомой причины, разговаривать (кроме предусмотренной консультации) и уходить в AFK."},
+ {q:"Когда по презентации обязательно запрашивается адвокат для задержанного?",a:["Только по просьбе при любой статье","При красной статье; при зелёной или жёлтой — по желанию задержанного","Адвокат не предусмотрен процедурой","Только после телефонного звонка"],c:1,e:"Адвокат обязателен при красной статье. При зелёной или жёлтой статье запрос производится только по желанию задержанного."}
+];
+let index=0, answers=Array(questions.length).fill(null), locked=Array(questions.length).fill(false);
+const $=id=>document.getElementById(id);
+function showQuestion(){
+ const item=questions[index]; $("counter").textContent=`Вопрос ${index+1} из ${questions.length}`;
+ $("answered").textContent=answers[index]===null?"Ответьте на вопрос":"Ответ выбран";
+ $("bar").style.width=`${index/questions.length*100}%`; $("qnum").textContent=`ВОПРОС ${String(index+1).padStart(2,"0")}`;
+ $("question").textContent=item.q; $("options").innerHTML=""; $("feedback").className="feedback"; $("feedback").textContent="";
+ item.a.forEach((answer,i)=>{
+  const label=document.createElement("label"); label.className="option"+(answers[index]===i?" selected":"");
+  const radio=document.createElement("input"); radio.type="radio";radio.name="answer";radio.value=i;radio.checked=answers[index]===i;
+  radio.addEventListener("change",()=>{answers[index]=i;showQuestion();});
+  const span=document.createElement("span");span.textContent=answer;label.append(radio,span);$("options").append(label);
+ });
+ $("back").disabled=index===0;
+ $("next").disabled=answers[index]===null;
+ $("next").textContent=index===questions.length-1?"Завершить тест →":"Ответить и продолжить →";
+}
+const ACCESS_PASSWORD = "USSS1234";
+$("passwordForm").addEventListener("submit",(event)=>{
+ event.preventDefault();
+ if($("sitePassword").value===ACCESS_PASSWORD){
+  $("passwordGate").classList.add("hidden");
+  $("welcome").classList.remove("hidden");
+  $("passwordError").textContent="";
+ }else{
+  $("passwordError").textContent="Неверный пароль. Проверьте ввод и попробуйте ещё раз.";
+  $("sitePassword").value="";
+  $("sitePassword").focus();
+ }
+});
+$("start").addEventListener("click",()=>{$("welcome").classList.add("hidden");$("quiz").classList.remove("hidden");showQuestion();});
+$("back").addEventListener("click",()=>{if(index>0){index--;showQuestion();}});
+$("next").addEventListener("click",()=>{if(answers[index]===null)return;if(index<questions.length-1){index++;showQuestion();}else finish();});
+function finish(){
+ const score=answers.reduce((n,a,i)=>n+(a===questions[i].c?1:0),0);
+ $("quiz").classList.add("hidden");$("result").classList.remove("hidden");$("score").textContent=`${score}/10`;
+ const passed=score>=8;
+ $("resultTitle").textContent=passed?"Тест пройден":"Требуется повторение материала";
+ $("resultText").textContent=passed?"Хороший результат. Повторите ошибки и продолжайте изучать внутренние документы USSS.":"Для учебного зачёта нужно набрать не менее 8 правильных ответов. Изучите пояснения и попробуйте ещё раз.";
+ $("review").innerHTML="";
+ questions.forEach((q,i)=>{
+  const div=document.createElement("div");div.className="review-item";
+  const correct=answers[i]===q.c;
+  const strong=document.createElement("strong");strong.className=correct?"ok":"no";strong.textContent=`${i+1}. ${correct?"✓ Верно":"✕ Неверно"} — ${q.q}`;
+  const p=document.createElement("div");p.textContent=`Правильный ответ: ${q.a[q.c]}. ${q.e}`;
+  div.append(strong,p);$("review").append(div);
+ });
+}
+$("restart").addEventListener("click",()=>{index=0;answers=Array(questions.length).fill(null);$("result").classList.add("hidden");$("quiz").classList.remove("hidden");showQuestion();});
+$("print").addEventListener("click",()=>window.print());
+</script>
+</body></html>
